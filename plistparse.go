@@ -6,8 +6,8 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"strconv"
 	"os"
+	"strconv"
 )
 
 type Dict struct {
