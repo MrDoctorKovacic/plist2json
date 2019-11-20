@@ -60,10 +60,16 @@ func (self *KeyPair) Print() {
 
 	if self.t == "integer" {
 		fmt.Print(self.i)
+		return
 	}
 
 	if self.t == "dict" {
 		self.d.Print()
+		return
+	}
+
+	if self.t == "" {
+		fmt.Print("\"\"")
 	}
 }
 
@@ -133,8 +139,8 @@ func readDict(rd *bufio.Reader) *Dict {
 				continue
 			}
 
-			if st == "string" {
-				k.t = st
+			if st == "string" || st == "date" {
+				k.t = "string"
 				st := getNextToken(rd, '<')
 				k.s = st
 			}
